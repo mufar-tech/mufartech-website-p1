@@ -19,6 +19,11 @@ export const metadata: Metadata = {
     description: 'Streamline your business operations with our integrated suite of enterprise applications.',
     type: 'website',
   },
+  icons: {
+    icon: '/mufar_favicon.png',
+    shortcut: '/mufar_favicon.png',
+    apple: '/mufar_favicon.png',
+  },
 }
 
 export const viewport: Viewport = {

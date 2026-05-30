@@ -13,7 +13,7 @@ import {
 export function DashboardPreview() {
   return (
     <section id="about" className="py-20 lg:py-28 bg-[#0F172A] dark-section overflow-hidden">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-9xl px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <p className="text-sm font-medium text-blue-400 uppercase tracking-wider mb-3">
             Dashboard Preview
