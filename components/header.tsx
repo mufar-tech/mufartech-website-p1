@@ -1,20 +1,22 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Image from "next/image"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useSession } from "next-auth/react"
 
 const navigation = [
   { name: "Home", href: "#" },
-  { name: "Products", href: "#products" },
-  { name: "Solutions", href: "#solutions" },
+  { name: "Forms", href: "#products" },
+  { name: "Tasks", href: "#products" },
+  { name: "CRM", href: "#products" },
   { name: "Pricing", href: "#pricing" },
-  { name: "About", href: "#about" },
-  { name: "Contact", href: "#contact" },
 ]
 
 export function Header() {
+  const { data: session } = useSession()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -34,16 +36,18 @@ export function Header() {
           : "bg-transparent"
       }`}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 h-16 lg:h-20">
+      <nav className="mx-auto flex max-w-9xl items-center justify-between px-4 sm:px-6 lg:px-8 h-16 lg:h-20">
         {/* Logo */}
         <div className="flex lg:flex-1">
-          <Link href="#" className="-m-1.5 p-1.5 flex items-center gap-2">
-            <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">M</span>
-            </div>
-            <span className="font-semibold text-lg text-foreground">
-              Mufar Technologies
-            </span>
+          <Link href="#" className="-m-1.5 p-1.5 flex items-center">
+            <span className="sr-only">Mufar Technologies</span>
+            <Image
+              src="/mufar_logo.png"
+              alt="Mufar Technologies logo"
+              width={64}
+              height={64}
+              className="h-26 w-56 rounded-xl object-contain"
+            />
           </Link>
         </div>
 
@@ -78,10 +82,25 @@ export function Header() {
 
         {/* CTA buttons */}
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-3">
-          <Button variant="ghost" size="sm">
-            Login
-          </Button>
-          <Button size="sm">Get Started</Button>
+          {session ? (
+            <>
+              <Link href="/admin">
+                <Button variant="ghost" size="sm">Dashboard</Button>
+              </Link>
+              <Link href="/admin/products">
+                <Button size="sm">Manage Products</Button>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link href="/login">
+                <Button variant="ghost" size="sm">Login</Button>
+              </Link>
+              <Link href="/register">
+                <Button size="sm">Get Started</Button>
+              </Link>
+            </>
+          )}
         </div>
       </nav>
 
@@ -100,10 +119,25 @@ export function Header() {
               </Link>
             ))}
             <div className="flex flex-col gap-2 pt-4">
-              <Button variant="outline" className="w-full">
-                Login
-              </Button>
-              <Button className="w-full">Get Started</Button>
+              {session ? (
+                <>
+                  <Link href="/admin" onClick={() => setMobileMenuOpen(false)}>
+                    <Button variant="outline" className="w-full">Dashboard</Button>
+                  </Link>
+                  <Link href="/admin/products" onClick={() => setMobileMenuOpen(false)}>
+                    <Button className="w-full">Manage Products</Button>
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link href="/login" onClick={() => setMobileMenuOpen(false)}>
+                    <Button variant="outline" className="w-full">Login</Button>
+                  </Link>
+                  <Link href="/register" onClick={() => setMobileMenuOpen(false)}>
+                    <Button className="w-full">Get Started</Button>
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>

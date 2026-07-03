@@ -31,7 +31,7 @@ const securityFeatures = [
 export function SecuritySection() {
   return (
     <section className="py-20 lg:py-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-9xl px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div>
             <p className="text-sm font-medium text-primary uppercase tracking-wider mb-3">

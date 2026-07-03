@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { SessionProvider } from '@/components/session-provider'
 import './globals.css'
 
 const inter = Inter({ 
@@ -18,6 +19,11 @@ export const metadata: Metadata = {
     title: 'Mufar Technologies - Unified Business Software Ecosystem',
     description: 'Streamline your business operations with our integrated suite of enterprise applications.',
     type: 'website',
+  },
+  icons: {
+    icon: '/mufar_favicon.png',
+    shortcut: '/mufar_favicon.png',
+    apple: '/mufar_favicon.png',
   },
 }
 
@@ -38,7 +44,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} bg-background`}>
       <body className="font-sans antialiased">
-        {children}
+        <SessionProvider>
+          {children}
+        </SessionProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

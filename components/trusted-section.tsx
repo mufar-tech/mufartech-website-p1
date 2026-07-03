@@ -8,7 +8,7 @@ const stats = [
 export function TrustedSection() {
   return (
     <section className="py-16 lg:py-20 border-y border-border bg-muted/30">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-9xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">
             Trusted by businesses worldwide

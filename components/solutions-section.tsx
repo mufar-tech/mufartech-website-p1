@@ -1,24 +1,24 @@
-import { Store, Factory, Briefcase, Rocket, Building2 } from "lucide-react"
+import { FileText, CheckSquare, Users, Rocket, Building2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const solutions = [
   {
-    icon: Store,
-    name: "Retail",
-    description: "Manage inventory, process sales, track customer data, and analyze performance across all your stores.",
-    features: ["POS Integration", "Multi-store management", "Customer loyalty"],
+    icon: FileText,
+    name: "Forms for Every Need",
+    description: "From customer surveys to employee registration, Mufar Forms handles it all with drag-and-drop simplicity.",
+    features: ["Drag-and-drop builder", "Response analytics", "Team collaboration"],
   },
   {
-    icon: Factory,
-    name: "Manufacturing",
-    description: "Streamline production, manage supply chains, and track quality from raw materials to finished goods.",
-    features: ["Production planning", "Quality control", "Supply chain"],
+    icon: CheckSquare,
+    name: "Task Management",
+    description: "Keep projects on track with Kanban boards, calendar views, and real-time team collaboration.",
+    features: ["Kanban boards", "Calendar view", "Progress reporting"],
   },
   {
-    icon: Briefcase,
-    name: "Service Businesses",
-    description: "Schedule appointments, manage projects, track time, and invoice clients with professional precision.",
-    features: ["Project management", "Time tracking", "Client portal"],
+    icon: Users,
+    name: "CRM & Sales",
+    description: "Manage your entire customer lifecycle from lead to loyal customer with powerful CRM tools.",
+    features: ["Lead tracking", "Pipeline management", "Revenue forecasting"],
   },
   {
     icon: Rocket,
@@ -34,20 +34,19 @@ const solutions = [
   },
 ]
 
-export function SolutionsSection() {
+export function SolutionsSection({ content }: { content: Record<string, string> }) {
   return (
     <section id="solutions" className="py-20 lg:py-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-9xl px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <p className="text-sm font-medium text-primary uppercase tracking-wider mb-3">
             Industry Solutions
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            Tailored for Your Industry
+            {content.solutions_heading || "Built for Every Industry"}
           </h2>
           <p className="text-lg text-muted-foreground">
-            Purpose-built configurations and workflows for different business types. 
-            Get started faster with industry-specific templates.
+            {content.solutions_subheading || "Tailored solutions that adapt to your unique business requirements."}
           </p>
         </div>
 

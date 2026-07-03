@@ -52,19 +52,19 @@ const features = [
   },
 ]
 
-export function FeaturesSection() {
+export function FeaturesSection({ content }: { content: Record<string, string> }) {
   return (
     <section className="py-20 lg:py-28 bg-muted/30">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-9xl px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <p className="text-sm font-medium text-primary uppercase tracking-wider mb-3">
-            Platform Features
+            Powerful Features
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            Built for Modern Businesses
+            {content.features_heading || "Everything You Need to Succeed"}
           </h2>
           <p className="text-lg text-muted-foreground">
-            Every feature is designed with scalability, security, and user experience in mind.
+            {content.features_subheading || "Powerful features designed to help you work smarter, not harder."}
           </p>
         </div>
 
