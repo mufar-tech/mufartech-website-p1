@@ -2,13 +2,9 @@ import Link from "next/link"
 
 const footerLinks = {
   products: [
-    { name: "Forms", href: "#" },
-    { name: "Inventory", href: "#" },
-    { name: "Payroll", href: "#" },
-    { name: "Billing", href: "#" },
-    { name: "Tasks", href: "#" },
-    { name: "Chat", href: "#" },
-    { name: "CRM", href: "#" },
+    { name: "Mufar Forms", href: "#" },
+    { name: "Mufar Tasks", href: "#" },
+    { name: "Mufar CRM", href: "#" },
   ],
   company: [
     { name: "About Us", href: "#" },
