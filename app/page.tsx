@@ -6,22 +6,30 @@ import { SolutionsSection } from "@/components/solutions-section"
 import { SecuritySection } from "@/components/security-section"
 import { CTASection } from "@/components/cta-section"
 import { Footer } from "@/components/footer"
+export const dynamic = 'force-dynamic'
+
 import { connectDB } from "@/lib/db"
 import { seedDB } from "@/lib/seed"
 import { SiteContent } from "@/lib/models/site-content"
 import { SaasProduct } from "@/lib/models/saas-product"
 
 export default async function Home() {
-  await connectDB()
-  await seedDB()
+  let content: Record<string, string> = {}
+  let products: any[] = []
 
-  const contentEntries = await SiteContent.find()
-  const content: Record<string, string> = {}
-  for (const entry of contentEntries) {
-    content[entry.key] = entry.content
+  try {
+    await connectDB()
+    await seedDB()
+
+    const contentEntries = await SiteContent.find()
+    for (const entry of contentEntries) {
+      content[entry.key] = entry.content
+    }
+
+    products = await SaasProduct.find().sort({ order: 1 }).lean()
+  } catch (e) {
+    console.error("DB error (running with defaults):", e instanceof Error ? e.message : e)
   }
-
-  const products = await SaasProduct.find().sort({ order: 1 }).lean()
 
   return (
     <>
